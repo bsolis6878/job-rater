@@ -1,4 +1,4 @@
-const Header = ({ currentlySelected, setCurrentlySelected}) => {
+const Header = ({ setCurrentlySelected }) => {
     return (
         <header>
             <h1>Job Rater</h1>
@@ -7,7 +7,7 @@ const Header = ({ currentlySelected, setCurrentlySelected}) => {
                     onClick={() => setCurrentlySelected('Home')}
                 >Home</h3>
                 <h3
-                    onClick={() => setCurrentlySelected('Blog posts')}
+                    onClick={() => setCurrentlySelected('Blogs')}
                 >Blog posts</h3>
                 <h3
                     onClick={() => setCurrentlySelected('Profile')}
