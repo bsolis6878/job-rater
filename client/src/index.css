@@ -13,7 +13,10 @@ code {
 }
 
 header {
+  text-align: center;
+}
+
+nav {
   display: flex;
-  justify-content: space-between;
-  margin: 20px
+  justify-content: space-evenly;
 }

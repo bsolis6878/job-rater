@@ -2,7 +2,11 @@ const Home = () => {
     return (
         <header>
             <h1>Job Rater</h1>
-            <p>Click here to see your profile!</p>
+            <nav>
+                <p>Home</p>
+                <p>Blog Posts</p>
+                <p>Your Profile</p>
+            </nav>
         </header>
     );
 };
