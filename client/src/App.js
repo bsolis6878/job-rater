@@ -1,11 +1,15 @@
+import { useState } from 'react';
 import Header from './components/Header'
 import Home from './components/Home'
 
 function App() {
+
+  const [currentlySelected, setCurrentlySelected] = useState('Home');
+
   return (
     <>
-      <Header />
-      <Home />
+      <Header setCurrentlySelected={setCurrentlySelected} />
+      {currentlySelected === 'Home' && <Home />}
     </>
   );
 }
