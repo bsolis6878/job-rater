@@ -1,14 +1,12 @@
 const Home = () => {
     return (
-        <header>
-            <h1>Job Rater</h1>
-            <nav>
-                <p>Home</p>
-                <p>Blog Posts</p>
-                <p>Your Profile</p>
-            </nav>
-        </header>
-    );
-};
+        <div className="card">
+            <h4>Name of company</h4>
+            <p>Number of stars</p>
+            <p>Body of review, will trail off with elipses</p>
+            <p>Username</p>
+        </div>
+    )
+}
 
 export default Home;
