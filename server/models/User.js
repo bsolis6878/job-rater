@@ -24,6 +24,12 @@ const userSchema = new Schema(
         ref: 'Review',
       },
     ],
+    blogs: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Blog',
+      },
+    ],
   },
   {
     toJSON: {

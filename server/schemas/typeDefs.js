@@ -8,6 +8,7 @@ const typeDefs = gql`
     username: String
     email: String
     reviews: [Review]
+    blogs: [Blog]
   }
   type Review {
     _id: ID
@@ -16,6 +17,13 @@ const typeDefs = gql`
     createdAt: String
     username: String
     rating: Int
+  }
+  type Blog {
+    _id: ID
+    title: String
+    bodyText: String
+    createdAt: String
+    username: String
   }
   type Auth {
     token: ID!
@@ -27,11 +35,14 @@ const typeDefs = gql`
     user(username: String!): User
     reviews(username: String): [Review]
     review(_id: ID!): Review
+    blogs(username: String): [Blog]
+    blog(_id: ID!): Blog
   }
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addReview(employerName: String!, reviewText: String!, rating: Int!): Review
+    addBlog(title: String!, bodyText: String!): Blog
   }
 `;
 
