@@ -3,6 +3,8 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Blogs from './components/Blogs';
 import Profile from './components/Profile';
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 function App() {
 
@@ -17,6 +19,8 @@ function App() {
       {currentlySelected === 'Home' && <Home />}
       {currentlySelected === 'Blogs' && <Blogs />}
       {currentlySelected === 'Profile' && <Profile />}
+      {currentlySelected === 'Login' && <Login />}
+      {currentlySelected === 'Signup' && <Signup />}
     </>
   );
 }

@@ -47,3 +47,23 @@ nav h3 {
 .profile {
   text-align: center;
 }
+
+.login-signup, .login-signup form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.login-signup input {
+  margin: 20px;
+  width: 10vw;
+}
+
+::placeholder {
+  text-align: center;
+}
+
+.login-signup button {
+  margin: 20px;
+}

@@ -15,6 +15,14 @@ const Header = ({ currentlySelected, setCurrentlySelected }) => {
                     onClick={() => setCurrentlySelected('Profile')}
                     className={currentlySelected === 'Profile' && 'active-nav'}
                 >Your profile</h3>
+                <h3
+                    onClick={() => setCurrentlySelected('Login')}
+                    className={currentlySelected === 'Login' && 'active-nav'}
+                >Login</h3>
+                <h3
+                    onClick={() => setCurrentlySelected('Signup')}
+                    className={currentlySelected === 'Signup' && 'active-nav'}
+                >Signup</h3>
             </nav>
         </header>
     );
