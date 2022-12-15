@@ -1,8 +1,8 @@
 :root {
-  --primary: #1DD3B0;
-  --secondary: #AFFC41;
-  --tertiary: #B2FF9E;
-  --fourth: blue;
+  --primary: #FFC6AC;
+  --secondary: #EBA6A9;
+  --tertiary: #002A32;
+  --fourth: #C4A29E;
   --fifth: green;
 }
 
@@ -13,7 +13,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tertiary);
 }
 
 code {
@@ -22,29 +21,20 @@ code {
 }
 
 header {
-  text-align: center;
-  background-color: var(--primary);
-}
-
-header h1 {
-  margin: 0px;
-  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 50px;
+  border-bottom: 5px solid black;
 }
 
 nav {
   display: flex;
-  justify-content: space-evenly;
 }
 
 nav h3 {
-  padding: 20px;
-  border: 3px solid black;
-  border-radius: 25%;
+  margin: 20px;
   cursor: pointer;
-}
-
-.active-nav {
-  background-color: var(--secondary);
 }
 
 .card {
