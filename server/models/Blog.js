@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
+const commentSchema = require('./Comment');
 
 const blogSchema = new Schema(
   {
@@ -20,6 +21,7 @@ const blogSchema = new Schema(
       type: String,
       require: true,
     },
+    comments: [commentSchema],
   },
   {
     toJSON: {
@@ -27,6 +29,9 @@ const blogSchema = new Schema(
     },
   }
 );
+blogSchema.virtual('commentCount').get(function () {
+  return this.comments.length;
+});
 const Blog = model('Blog', blogSchema);
 
 module.exports = Blog;
