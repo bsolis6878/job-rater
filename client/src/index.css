@@ -1,3 +1,11 @@
+:root {
+  --primary: #1DD3B0;
+  --secondary: #AFFC41;
+  --tertiary: #B2FF9E;
+  --fourth: blue;
+  --fifth: green;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +13,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--tertiary);
 }
 
 code {
@@ -14,6 +23,12 @@ code {
 
 header {
   text-align: center;
+  background-color: var(--primary);
+}
+
+header h1 {
+  margin: 0px;
+  padding: 20px;
 }
 
 nav {
@@ -21,8 +36,19 @@ nav {
   justify-content: space-evenly;
 }
 
+nav h3 {
+  padding: 20px;
+  border: 3px solid black;
+  border-radius: 25%;
+  cursor: pointer;
+}
+
+.active-nav {
+  background-color: var(--secondary);
+}
+
 .card {
-  margin: auto;
+  margin: 50px;
   width: 25%;
   text-align: center;
   border: 2px black solid;
