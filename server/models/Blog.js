@@ -32,6 +32,7 @@ const blogSchema = new Schema(
 blogSchema.virtual('commentCount').get(function () {
   return this.comments.length;
 });
+
 const Blog = model('Blog', blogSchema);
 
 module.exports = Blog;
