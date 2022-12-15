@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+header {
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.card {
+  margin: auto;
+  width: 25%;
+  text-align: center;
+  border: 2px black solid;
+}
+
+.profile {
+  text-align: center;
+}
