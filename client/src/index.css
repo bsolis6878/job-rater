@@ -48,16 +48,16 @@ nav h3 {
   text-align: center;
 }
 
-.login-signup, .login-signup form {
+.login-signup, .login-signup form, .review {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
 }
 
-.login-signup input {
+.login-signup input, .review input {
   margin: 20px;
-  width: 10vw;
+  width: 15vw;
 }
 
 ::placeholder {
@@ -66,4 +66,19 @@ nav h3 {
 
 .login-signup button {
   margin: 20px;
+}
+
+#flavor-text {
+  text-align: center;
+  margin: 50px;
+  cursor: pointer;
+}
+
+.review button {
+  margin: 50px;
+}
+
+textarea {
+  height: 10vh;
+  width: 40vw;
 }

@@ -8,7 +8,7 @@ const Login = () => {
                 <label for='password'>Password</label>
                 <input id='password' placeholder='Enter your password here'></input>
                 <button type='submit'>
-                    Submit
+                    Login
                 </button>
             </form>
         </div>
