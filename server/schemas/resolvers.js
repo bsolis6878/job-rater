@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Review } = require('../models');
+const { User, Review, Blog } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -8,7 +8,8 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
-          .populate('reviews');
+          .populate('reviews')
+          .populate('blogs');
 
         console.log(userData);
         return userData;
@@ -16,12 +17,16 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
     users: async () => {
-      return User.find().select('-__v -password').populate('reviews');
+      return User.find()
+        .select('-__v -password')
+        .populate('reviews')
+        .populate('blogs');
     },
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select('-__v -password')
-        .populate('reviews');
+        .populate('reviews')
+        .populate('blogs');
     },
     reviews: async (parent, { username }) => {
       const params = username ? { username } : {};
@@ -29,6 +34,13 @@ const resolvers = {
     },
     review: async (parent, { _id }) => {
       return Review.findOne({ _id });
+    },
+    blogs: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Blog.find(params).sort({ createdAt: -1 });
+    },
+    blog: async (parent, { _id }) => {
+      return Blog.findOne({ _id });
     },
   },
   Mutation: {
@@ -64,6 +76,36 @@ const resolvers = {
           { new: true }
         );
         return review;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    addBlog: async (parent, args, context) => {
+      if (context.user) {
+        const blog = await Blog.create({
+          ...args,
+          username: context.user.username,
+        });
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { blogs: blog._id } },
+          { new: true }
+        );
+        return blog;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    addComment: async (parent, { blogId, commentBody }, context) => {
+      if (context.user) {
+        const updatedBlog = await Blog.findOneAndUpdate(
+          { _id: blogId },
+          {
+            $push: {
+              comments: { commentBody, username: context.user.username },
+            },
+          },
+          { new: true, runValidators: true }
+        );
+        return updatedBlog;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
