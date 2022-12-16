@@ -48,14 +48,14 @@ nav h3 {
   text-align: center;
 }
 
-.login-signup, .login-signup form, .review {
+.login-signup, .login-signup form, .post {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
 }
 
-.login-signup input, .review input {
+.login-signup input, .post input {
   margin: 20px;
   width: 15vw;
 }
@@ -74,11 +74,16 @@ nav h3 {
   cursor: pointer;
 }
 
-.review button {
+.post button {
   margin: 50px;
 }
 
 textarea {
   height: 10vh;
   width: 40vw;
+  margin-top: 20px;
+}
+
+#rating {
+  width: 2vw;
 }

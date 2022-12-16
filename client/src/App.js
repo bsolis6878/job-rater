@@ -9,6 +9,7 @@ import Profile from './components/Profile';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Review from './components/PostReview';
+import BlogPost from './components/PostBlog';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -40,11 +41,12 @@ function App() {
         setCurrentlySelected={setCurrentlySelected}
       />
       {currentlySelected === 'Home' && <Home setCurrentlySelected={setCurrentlySelected} />}
-      {currentlySelected === 'Blogs' && <Blogs />}
+      {currentlySelected === 'Blogs' && <Blogs setCurrentlySelected={setCurrentlySelected}  />}
       {currentlySelected === 'Profile' && <Profile setCurrentlySelected={setCurrentlySelected} />}
       {currentlySelected === 'Login' && <Login />}
       {currentlySelected === 'Signup' && <Signup />}
       {currentlySelected === 'Review' && <Review />}
+      {currentlySelected === 'BlogPost' && <BlogPost />}
     </ApolloProvider>
   );
 }

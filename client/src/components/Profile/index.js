@@ -7,6 +7,10 @@ const Profile = ({ setCurrentlySelected }) => {
                 id='flavor-text'
                 onClick={() => setCurrentlySelected('Review')}
             >Click here to post a review!</p>
+            <p
+                id='flavor-text'
+                onClick={() => setCurrentlySelected('BlogPost')}
+            >Click here to make your own blog post!</p>
         </div>
     )
 }
