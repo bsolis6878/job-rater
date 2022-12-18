@@ -23,3 +23,16 @@ export const ADD_USER = gql`
         }
     }
 `;
+
+export const ADD_REVIEW = gql`
+    mutation addReview($employerName: String!, $reviewText: String!, $rating: Int!) {
+        addReview(employerName: $employerName, reviewText: $reviewText, rating: $rating) {
+            _id
+            employerName
+            reviewText
+            createdAt
+            username
+            rating
+        }
+    }
+`

@@ -1,8 +1,60 @@
+import { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { ADD_REVIEW } from '../../utils/mutations';
+
 const Review = () => {
+    const [addReview, { error }] = useMutation(ADD_REVIEW);
+
+    const [formData, setFormData] = useState({
+        employerName: '',
+        rating: null,
+        reviewText: '',
+    });
+
+    const handleReviewChange = async event => {
+        event.preventDefault();
+        const review = event.target.value;
+        setFormData({
+            ...formData,
+            reviewText: review
+        })
+    }
+
+    const handleNameChange = async event => {
+        event.preventDefault();
+        const name = event.target.value;
+        setFormData({
+            ...formData,
+            employerName: name
+        })
+    }
+
+    const handleRatingChange = async event => {
+        event.preventDefault();
+        const rating = parseInt(event.target.value);
+        setFormData({
+            ...formData,
+            rating
+        })
+    }
+
+    const handleFormSubmit = async event => {
+        event.preventDefault();
+        const { employerName, rating, reviewText } = formData;
+        console.log(employerName, rating, reviewText)
+        try {
+            await addReview({
+                variables: { employerName, rating, reviewText }
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
     return (
-        <form className='post'>
+        <form className='post' onSubmit={handleFormSubmit}>
             <label htmlFor='name'>What is the name of the company you worked for?</label>
-            <input id='name' placeholder='Name of company' name='name' />
+            <input id='name' placeholder='Name of company' name='name' onChange={handleNameChange} />
             <label htmlFor='rating'>
                 Overall, how would you rate your experience with this place of employment?
             </label>
@@ -13,9 +65,10 @@ const Review = () => {
                     event.preventDefault();
                 }
                 }}
+                onChange={handleRatingChange}
             />
             <p>Tell us about your experience!</p>
-            <textarea placeholder="Don't be shy!" />
+            <textarea placeholder="Don't be shy!" onChange={handleReviewChange} />
             <button>Post your review</button>
         </form>
     )
