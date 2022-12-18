@@ -40,6 +40,7 @@ const Review = () => {
 
     const handleFormSubmit = async event => {
         const { employerName, rating, reviewText } = formData;
+        event.preventDefault();
         
         try {
             await addReview({
@@ -48,6 +49,7 @@ const Review = () => {
         } catch (e) {
             console.error(e);
         }
+        window.location.reload();
     };
 
     return (

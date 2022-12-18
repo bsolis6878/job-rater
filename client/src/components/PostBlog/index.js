@@ -30,6 +30,7 @@ const PostBlog = () => {
 
     const handleFormSubmit = async event => {
         const { title, bodyText } = formData;
+        event.preventDefault();
 
         try {
             await addBlog({
@@ -38,6 +39,7 @@ const PostBlog = () => {
         } catch (e) {
             console.error(e);
         }
+        window.location.reload();
     }
 
     return (
