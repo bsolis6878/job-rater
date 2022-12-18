@@ -7,12 +7,12 @@ const Blogs = ({ setCurrentlySelected }) => {
     const { loading, data } = useQuery(QUERY_BLOGS)
 
     return (
-        <div>
+        <div className='parent'>
             {Auth.loggedIn() &&
-                <p
-                    id='flavor-text'
+                <button
+                    className='post-button'
                     onClick={() => setCurrentlySelected('BlogPost')}
-                >Click here to make your own blog post!</p>
+                >Click here to make your own blog post!</button>
             }
             {loading ? (
                 <div>Loading...</div>
@@ -20,9 +20,13 @@ const Blogs = ({ setCurrentlySelected }) => {
                 <div className='card-container'>
                     {data.blogs.map(blog =>
                         <div className="card">
-                            <h4>{blog.title}</h4>
-                            <p>{blog.bodyText}</p>
-                            <p>From {blog.username} on {blog.createdAt}</p>
+                            <h4 className="card-header">{blog.title}</h4>
+                            <div className="card-body">
+                                <p>{blog.bodyText}</p>
+                            </div>
+                            <div className="card-header">
+                                <p>From {blog.username} on {blog.createdAt}</p>
+                            </div>
                         </div>
                     )}
                 </div>

@@ -43,27 +43,27 @@ const Login = () => {
         <div className='login-signup'>
             <p>Login to continue.</p>
             <form onSubmit={handleFormSubmit}>
-                <label htmlFor='email'>Email</label>
-                <input 
-                    id='email'
-                    placeholder='Enter your email here'
-                    type='email'
-                    name='email'
-                    value={formState.email}
-                    onChange={handleChange}
-                />
-                <label htmlFor='password'>Password</label>
-                <input 
-                    id='password'
-                    placeholder='Enter your password here'
-                    name='password'
-                    type='password'
-                    value={formState.password}
-                    onChange={handleChange}
-                />
-                <button type='submit'>
-                    Login
-                </button>
+              <label htmlFor='email'>Email</label>
+              <input 
+                  id='email'
+                  placeholder='Enter your email here'
+                  type='email'
+                  name='email'
+                  value={formState.email}
+                  onChange={handleChange}
+              />
+              <label htmlFor='password'>Password</label>
+              <input 
+                  id='password'
+                  placeholder='Enter your password here'
+                  name='password'
+                  type='password'
+                  value={formState.password}
+                  onChange={handleChange}
+              />
+              <button type='submit'>
+                  Login
+              </button>
             </form>
             {error && <div>Login failed</div>}
         </div>

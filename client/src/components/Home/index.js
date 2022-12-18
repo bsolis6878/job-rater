@@ -1,18 +1,18 @@
 import Auth from '../../utils/auth';
 import { useQuery } from '@apollo/client';
-import { QUERY_REVIEWS } from '../../utils/queries';;
+import { QUERY_REVIEWS } from '../../utils/queries';
 
 const Home = ({ setCurrentlySelected }) => {
 
     const { loading, data } = useQuery(QUERY_REVIEWS)
 
     return (
-        <div>
+        <div className='parent'>
             {Auth.loggedIn() &&
-                <p
-                    id='flavor-text'
+                <button
+                    className='post-button'
                     onClick={() => setCurrentlySelected('Review')}
-                >Click here to post a review!</p>
+                >Click here to post a review!</button>
             }
             {loading ? (
                 <div>Loading...</div>
@@ -20,10 +20,14 @@ const Home = ({ setCurrentlySelected }) => {
                 <div className='card-container'>
                     {data.reviews.map(review => 
                         <div className="card">
-                            <h4>{review.employerName}</h4>
-                            <p>{review.rating} out of 5 stars</p>
-                            <p>{review.reviewText}</p>
-                            <p>{review.username} on {review.createdAt}</p>
+                            <h4 className="card-header">{review.employerName}</h4>
+                            <div className="card-body">
+                                <p>{review.rating} out of 5 stars</p>
+                                <p>{review.reviewText}</p>
+                            </div>
+                            <div className="card-header">
+                                <p>{review.username} on {review.createdAt}</p>
+                            </div>
                         </div>
                     )}
                 </div>

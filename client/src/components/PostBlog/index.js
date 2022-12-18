@@ -46,7 +46,7 @@ const PostBlog = () => {
             <input id='title' placeholder='Enter title for blog post' name='title' onChange={handleTitleChange} />
             <label htmlFor='body'>What's on your mind?</label>
             <textarea placeholder="Don't be shy!" onChange={handleBodyChange} />
-            <button>Make your blog post</button>
+            <button className='post-button'>Make your blog post</button>
         </form>
     )
 }

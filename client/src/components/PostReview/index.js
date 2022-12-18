@@ -68,7 +68,7 @@ const Review = () => {
             />
             <p>Tell us about your experience!</p>
             <textarea placeholder="Don't be shy!" onChange={handleReviewChange} />
-            <button>Post your review</button>
+            <button className='post-button'>Post your review</button>
         </form>
     )
 }
