@@ -39,9 +39,8 @@ const Review = () => {
     }
 
     const handleFormSubmit = async event => {
-        event.preventDefault();
         const { employerName, rating, reviewText } = formData;
-        console.log(employerName, rating, reviewText)
+        
         try {
             await addReview({
                 variables: { employerName, rating, reviewText }

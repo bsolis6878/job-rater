@@ -17,14 +17,16 @@ const Home = ({ setCurrentlySelected }) => {
             {loading ? (
                 <div>Loading...</div>
             ) : (
-                data.reviews.map(review => 
-                    <div className="card">
-                        <h4>{review.employerName}</h4>
-                        <p>{review.rating} / 5</p>
-                        <p>{review.reviewText}</p>
-                        <p>{review.username}</p>
-                    </div>
-                )
+                <div className='card-container'>
+                    {data.reviews.map(review => 
+                        <div className="card">
+                            <h4>{review.employerName}</h4>
+                            <p>{review.rating} out of 5 stars</p>
+                            <p>{review.reviewText}</p>
+                            <p>{review.username} on {review.createdAt}</p>
+                        </div>
+                    )}
+                </div>
             )}
         </div>
     )

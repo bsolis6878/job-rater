@@ -36,3 +36,15 @@ export const ADD_REVIEW = gql`
         }
     }
 `
+
+export const ADD_BLOG = gql`
+    mutation addBlog($title: String!, $bodyText: String!) {
+        addBlog(title: $title, bodyText: $bodyText) {
+            _id
+            title
+            bodyText
+            createdAt
+            username
+        }
+    }
+`

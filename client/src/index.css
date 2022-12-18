@@ -44,6 +44,11 @@ nav h3 {
   border: 2px black solid;
 }
 
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .profile {
   text-align: center;
 }
