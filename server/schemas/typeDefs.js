@@ -52,6 +52,8 @@ const typeDefs = gql`
     addReview(employerName: String!, reviewText: String!, rating: Int!): Review
     addBlog(title: String!, bodyText: String!): Blog
     addComment(blogId: ID!, commentBody: String!): Blog
+    removeBlog(blogId: ID!): Blog
+    updateBlog(blogId: ID!, title: String!, bodyText: String!): Blog
   }
 `;
 

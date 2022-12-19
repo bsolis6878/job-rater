@@ -109,6 +109,19 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    removeBlog: async (parent, { blogId }) => {
+      return await Blog.findByIdAndDelete({ _id: blogId });
+    },
+    updateBlog: async (parent, { blogId, title, bodyText }, context) => {
+      if (context.user) {
+        const updatedBlog = await Blog.findOneAndUpdate(
+          { _id: blogId },
+          { title, bodyText }
+        );
+        return updatedBlog;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 };
 
