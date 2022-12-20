@@ -79,6 +79,24 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    removeReview: async (parent, { reviewId }) => {
+      return await Review.findByIdAndDelete({ _id: reviewId });
+    },
+    updateReview: async (
+      parent,
+      { reviewId, employerName, reviewText, jobTitle, rating },
+      context
+    ) => {
+      if (context.user) {
+        const updatedReview = await Review.findOneAndUpdate(
+          { _id: reviewId },
+          { employerName, reviewText, jobTitle, rating }
+        );
+        return updatedReview;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
     addBlog: async (parent, args, context) => {
       if (context.user) {
         const blog = await Blog.create({

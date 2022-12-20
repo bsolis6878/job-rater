@@ -15,6 +15,11 @@ const reviewSchema = new Schema(
       minlength: 1,
       maxlength: 280,
     },
+    jobTitle: {
+      type: String,
+      required: true,
+      maxlength: 80,
+    },
     createdAt: {
       type: Date,
       default: Date.now,

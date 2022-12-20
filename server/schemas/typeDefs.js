@@ -14,6 +14,7 @@ const typeDefs = gql`
     _id: ID
     employerName: String
     reviewText: String
+    jobTitle: String
     createdAt: String
     username: String
     rating: Int
@@ -49,11 +50,24 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addReview(employerName: String!, reviewText: String!, rating: Int!): Review
+    addReview(
+      employerName: String!
+      reviewText: String!
+      jobTitle: String!
+      rating: Int!
+    ): Review
     addBlog(title: String!, bodyText: String!): Blog
     addComment(blogId: ID!, commentBody: String!): Blog
     removeBlog(blogId: ID!): Blog
     updateBlog(blogId: ID!, title: String!, bodyText: String!): Blog
+    removeReview(reviewId: ID!): Review
+    updateReview(
+      reviewId: ID!
+      employerName: String!
+      reviewText: String!
+      jobTitle: String!
+      rating: Int!
+    ): Review
   }
 `;
 
