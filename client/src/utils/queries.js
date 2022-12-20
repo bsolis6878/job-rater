@@ -9,6 +9,7 @@ export const QUERY_REVIEWS = gql`
             createdAt
             username
             rating
+            jobTitle
         }
     }
 `

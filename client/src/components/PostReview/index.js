@@ -9,6 +9,7 @@ const Review = () => {
         employerName: '',
         rating: null,
         reviewText: '',
+        jobTitle: ''
     });
 
     const handleReviewChange = async event => {
@@ -38,13 +39,22 @@ const Review = () => {
         })
     }
 
+    const handleTitleChange = async event => {
+        event.preventDefault();
+        const title = event.target.value;
+        setFormData({
+            ...formData,
+            jobTitle: title
+        })
+    }
+
     const handleFormSubmit = async event => {
-        const { employerName, rating, reviewText } = formData;
+        const { employerName, rating, reviewText, jobTitle } = formData;
         event.preventDefault();
         
         try {
             await addReview({
-                variables: { employerName, rating, reviewText }
+                variables: { employerName, rating, reviewText, jobTitle }
             });
         } catch (e) {
             console.error(e);
@@ -56,6 +66,8 @@ const Review = () => {
         <form className='post' onSubmit={handleFormSubmit}>
             <label htmlFor='name'>What is the name of the company you worked for?</label>
             <input id='name' placeholder='Name of company' name='name' onChange={handleNameChange} />
+            <label htmlFor='title'>What was the role you had in this company?</label>
+            <input id='title' placeholder='Role in company' name='title' onChange={handleTitleChange} />
             <label htmlFor='rating'>
                 Overall, how would you rate your experience with this place of employment?
             </label>

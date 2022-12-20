@@ -9,54 +9,70 @@ const Profile = ({ setCurrentlySelected }) => {
     const user = Auth.getProfile().data.username;
 
     return (
-        <div className='parent'>
-            <button
-                className='post-button'
-                onClick={() => setCurrentlySelected('Review')}
-            >Click here to post a review!</button>
-            <button
-                className='post-button'
-                onClick={() => setCurrentlySelected('BlogPost')}
-            >Click here to make your own blog post!</button>
+        <div className='home'>
+            <div className='parent' id='profile'>
 
-            <h4>Your reviews</h4>
-                {reviewLoading ? (
-                    <div>Loading...</div>
-                ) : (
-                    <div className='card-container'>
-                        {reviewData.reviews.map(review => 
-                            <div className="card">
-                                <h4 className="card-header">{review.employerName}</h4>
-                                <div className="card-body">
-                                    <p>{review.rating} out of 5 stars</p>
-                                    <p>{review.reviewText}</p>
-                                </div>
-                                <div className="card-header">
-                                    <p>{review.username} on {review.createdAt}</p>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                )}
+                <div className='profile-buttons'>
+                    <button
+                        className='post-button'
+                        onClick={() => setCurrentlySelected('Review')}
+                    >Click here to post a review!</button>
+                    <button
+                        className='post-button'
+                        onClick={() => setCurrentlySelected('BlogPost')}
+                    >Click here to make your own blog post!</button>
+                </div>
 
-            <h4>Your blog posts</h4>
-                {blogLoading ? (
-                    <div>Loading...</div>
-                ) : (
-                    <div className='card-container'>
-                        {blogData.blogs.map(blog =>
-                            <div className="card">
-                                <h4 className="card-header">{blog.title}</h4>
-                                <div className="card-body">
-                                    <p>{blog.bodyText}</p>
-                                </div>
-                                <div className="card-header">
-                                    <p>From {blog.username} on {blog.createdAt}</p>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                )}
+                <h4>Your reviews</h4>
+                    {reviewLoading ? (
+                        <div>Loading...</div>
+                    ) : (
+                        <div className='card-container'>
+                            {reviewData.reviews.map(review =>
+                                {if (review.username === user) {
+                                    return (
+                                        <div className="card">
+                                        <div className="card-header">
+                                            <h4>{review.employerName}</h4>
+                                            <h4>{review.jobTitle}</h4>
+                                        </div>
+                                        <div className="card-body">
+                                            <p>{review.rating} out of 5 stars</p>
+                                            <p>{review.reviewText}</p>
+                                        </div>
+                                        <div className="card-header">
+                                            <p>{review.username} on {review.createdAt}</p>
+                                        </div>
+                                    </div>
+                                    )
+                                }}
+                            )}
+                        </div>
+                    )}
+
+                <h4>Your blog posts</h4>
+                    {blogLoading ? (
+                        <div>Loading...</div>
+                    ) : (
+                        <div className='card-container'>
+                            {blogData.blogs.map(blog =>
+                                {if (blog.username === user) {
+                                    return (
+                                        <div className="card">
+                                            <h4 className="card-header">{blog.title}</h4>
+                                            <div className="card-body">
+                                                <p>{blog.bodyText}</p>
+                                            </div>
+                                            <div className="card-header">
+                                                <p>From {blog.username} on {blog.createdAt}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                }}
+                            )}
+                        </div>
+                    )}
+            </div>
         </div>
     )
 }

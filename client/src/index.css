@@ -1,9 +1,9 @@
 :root {
-  --primary: #FFC6AC;
-  --secondary: #EBA6A9;
-  --tertiary: #002A32;
-  --fourth: #C4A29E;
-  --fifth: green;
+  --primary: #41BBD9;
+  --secondary: #99C24D;
+  --tertiary: #F18F01;
+  --fourth: #006E90;
+  --fifth: #ADCAD6;
 }
 
 body {
@@ -13,7 +13,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: lightgray;
+  background-color: var(--tertiary)
 }
 
 code {
@@ -27,8 +27,11 @@ header {
   align-items: center;
   padding: 0px 50px;
   border-bottom: 5px solid black;
-  color: white;
-  background-color: black;
+  background-color: var(--primary)
+}
+
+header h1 {
+  cursor: pointer;
 }
 
 nav {
@@ -40,9 +43,35 @@ nav h3 {
   cursor: pointer;
 }
 
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro {
+  border: 2px solid black;
+  text-align: center;
+  margin: 50px;
+  width: 80vw;
+  background-color: var(--secondary);
+}
+
+.intro h2 {
+  background-color: var(--primary);
+  margin: 0;
+  padding: 10px;
+  border-bottom: 2px black solid;
+}
+
+.intro p {
+  padding: 10px;
+}
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .card {
@@ -52,15 +81,21 @@ nav h3 {
 }
 
 .card-body {
-  border: 2px black solid;
+  border-right: 2px black solid;
+  border-left: 2px black solid;
   padding: 10px;
+  background-color: var(--secondary)
 }
 
 .card-header {
-  color: white;
-  background-color: black;
+  background-color: var(--primary);
   padding: 10px;
   margin: 0;
+  border: 2px black solid;
+}
+
+.card-header h4 {
+  margin: 5px;
 }
 
 .card-header p {
@@ -69,6 +104,20 @@ nav h3 {
 
 .parent {
   text-align: center;
+  width: 90vw;
+  background-color: var(--fourth);
+  border-radius: 20px;
+  border: 2px solid black;
+  margin-bottom: 50px;
+}
+
+#profile {
+  margin-top: 50px;
+}
+
+.profile-buttons {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .login-signup, .login-signup form, .post {
@@ -92,9 +141,9 @@ nav h3 {
 }
 
 .post-button {
-  color: white;
-  background-color: black;
-  margin: 50px;
+  border: black 2px solid;
+  background-color: var(--tertiary);
+  margin-top: 40px;
   padding: 20px;
   cursor: pointer;
   font-size: 16px;

@@ -25,14 +25,15 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_REVIEW = gql`
-    mutation addReview($employerName: String!, $reviewText: String!, $rating: Int!) {
-        addReview(employerName: $employerName, reviewText: $reviewText, rating: $rating) {
+    mutation addReview($employerName: String!, $reviewText: String!, $rating: Int!, $jobTitle: String!) {
+        addReview(employerName: $employerName, reviewText: $reviewText, rating: $rating, jobTitle: $jobTitle) {
             _id
             employerName
             reviewText
             createdAt
             username
             rating
+            jobTitle
         }
     }
 `
