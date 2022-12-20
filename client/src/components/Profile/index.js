@@ -2,7 +2,7 @@ import Auth from '../../utils/auth';
 import { useQuery } from '@apollo/client';
 import { QUERY_REVIEWS, QUERY_BLOGS } from '../../utils/queries';
 
-const Profile = ({ setCurrentlySelected }) => {
+const Profile = ({ setBlogId, setReviewId, setCurrentlySelected }) => {
     const { loading: reviewLoading, data: reviewData } = useQuery(QUERY_REVIEWS);
     const { loading: blogLoading, data: blogData } = useQuery(QUERY_BLOGS);
 
@@ -42,6 +42,14 @@ const Profile = ({ setCurrentlySelected }) => {
                                         </div>
                                         <div className="card-header">
                                             <p>{review.username} on {review.createdAt}</p>
+                                            <p
+                                                id='pointer'
+                                                onClick={() => {
+                                                    setReviewId(review._id)
+                                                    setCurrentlySelected('SingleReview')
+                                                }}>
+                                                Click here to edit this review!
+                                            </p>
                                         </div>
                                     </div>
                                     )
@@ -65,6 +73,14 @@ const Profile = ({ setCurrentlySelected }) => {
                                             </div>
                                             <div className="card-header">
                                                 <p>From {blog.username} on {blog.createdAt}</p>
+                                                <p
+                                                    id='pointer'
+                                                    onClick={() => {
+                                                        setBlogId(blog._id)
+                                                        setCurrentlySelected('SingleBlog')
+                                                    }}>
+                                                    Click here to edit this blog post!
+                                                </p>
                                             </div>
                                         </div>
                                     )

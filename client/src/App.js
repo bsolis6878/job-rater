@@ -10,6 +10,8 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Review from './components/PostReview';
 import BlogPost from './components/PostBlog';
+import SingleReview from './components/SingleReview';
+import SingleBlog from './components/SingleBlog';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -33,6 +35,8 @@ const client = new ApolloClient({
 function App() {
 
   const [currentlySelected, setCurrentlySelected] = useState('Home');
+  const [reviewId, setReviewId] = useState('');
+  const [blogId, setBlogId] = useState('');
 
   return (
     <ApolloProvider client={client}>
@@ -42,11 +46,17 @@ function App() {
       />
       {currentlySelected === 'Home' && <Home setCurrentlySelected={setCurrentlySelected} />}
       {currentlySelected === 'Blogs' && <Blogs setCurrentlySelected={setCurrentlySelected}  />}
-      {currentlySelected === 'Profile' && <Profile setCurrentlySelected={setCurrentlySelected} />}
+      {currentlySelected === 'Profile' && <Profile
+        setBlogId={setBlogId}
+        setReviewId={setReviewId}
+        setCurrentlySelected={setCurrentlySelected} />
+      }
       {currentlySelected === 'Login' && <Login />}
       {currentlySelected === 'Signup' && <Signup />}
       {currentlySelected === 'Review' && <Review />}
       {currentlySelected === 'BlogPost' && <BlogPost />}
+      {currentlySelected === 'SingleReview' && <SingleReview reviewId={reviewId} />}
+      {currentlySelected === 'SingleBlog' && <SingleBlog blogId={blogId} />}
     </ApolloProvider>
   );
 }

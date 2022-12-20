@@ -25,8 +25,18 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_REVIEW = gql`
-    mutation addReview($employerName: String!, $reviewText: String!, $rating: Int!, $jobTitle: String!) {
-        addReview(employerName: $employerName, reviewText: $reviewText, rating: $rating, jobTitle: $jobTitle) {
+    mutation addReview(
+        $employerName: String!, 
+        $reviewText: String!, 
+        $rating: Int!, 
+        $jobTitle: String!
+    ) {
+        addReview(
+            employerName: $employerName, 
+            reviewText: $reviewText, 
+            rating: $rating, 
+            jobTitle: $jobTitle
+        ) {
             _id
             employerName
             reviewText
@@ -46,6 +56,54 @@ export const ADD_BLOG = gql`
             bodyText
             createdAt
             username
+        }
+    }
+`
+
+export const UPDATE_REVIEW = gql`
+    mutation updateReview(
+        $reviewId: ID!, 
+        $employerName: String!, 
+        $reviewText: String!, 
+        $rating: Int!, 
+        $jobTitle: String!
+    ) {
+        updateReview(
+            reviewId: $reviewId
+            employerName: $employerName
+            reviewText: $reviewText
+            rating: $rating
+            jobTitle: $jobTitle
+        ) {
+            employerName
+            reviewText
+            rating
+            jobTitle
+        }
+    }
+`
+
+export const REMOVE_REVIEW = gql`
+    mutation removeReview($reviewId: ID!) {
+        removeReview(reviewId: $reviewId) {
+            _id
+        }
+    }
+`
+
+export const UPDATE_BLOG = gql`
+    mutation updateBlog($blogId: ID!, $title: String!, $bodyText: String!) {
+        updateBlog(blogId: $blogId, title: $title, bodyText: $bodyText) {
+            title
+            bodyText
+        }
+    }
+`
+
+export const REMOVE_BLOG = gql`
+    mutation removeBlog($blogId: ID!) {
+        removeBlog(blogId: $blogId) {
+            _id
         }
     }
 `

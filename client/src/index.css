@@ -30,7 +30,7 @@ header {
   background-color: var(--primary)
 }
 
-header h1 {
+header h1, #pointer {
   cursor: pointer;
 }
 
@@ -118,6 +118,12 @@ nav h3 {
 .profile-buttons {
   display: flex;
   justify-content: space-evenly;
+}
+
+.edit-delete {
+  background-color: var(--tertiary);
+  margin: 10px;
+  border: solid black 2px;
 }
 
 .login-signup, .login-signup form, .post {
