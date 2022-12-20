@@ -13,6 +13,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: lightgray;
 }
 
 code {
@@ -26,6 +27,8 @@ header {
   align-items: center;
   padding: 0px 50px;
   border-bottom: 5px solid black;
+  color: white;
+  background-color: black;
 }
 
 nav {
@@ -37,14 +40,34 @@ nav h3 {
   cursor: pointer;
 }
 
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .card {
   margin: 50px;
   width: 25%;
   text-align: center;
-  border: 2px black solid;
 }
 
-.profile {
+.card-body {
+  border: 2px black solid;
+  padding: 10px;
+}
+
+.card-header {
+  color: white;
+  background-color: black;
+  padding: 10px;
+  margin: 0;
+}
+
+.card-header p {
+  margin: 0;
+}
+
+.parent {
   text-align: center;
 }
 
@@ -68,10 +91,13 @@ nav h3 {
   margin: 20px;
 }
 
-#flavor-text {
-  text-align: center;
+.post-button {
+  color: white;
+  background-color: black;
   margin: 50px;
+  padding: 20px;
   cursor: pointer;
+  font-size: 16px;
 }
 
 .post button {
