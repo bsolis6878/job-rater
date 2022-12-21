@@ -34,6 +34,10 @@ header h1, #pointer {
   cursor: pointer;
 }
 
+#pointer {
+  font-weight: bold;
+}
+
 nav {
   display: flex;
 }
