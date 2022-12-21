@@ -8,11 +8,20 @@ const SingleBlog = ({ blogId }) => {
   const [updateBlog, { updateError }] = useMutation(UPDATE_BLOG);
   const [removeBlog, { removeError }] = useMutation(REMOVE_BLOG);
 
-  const [formData, setFormData] = useState({
+  const blog = {
     blogId: blogId,
     title: '',
     bodyText: '',
+  };
+
+  data.blogs.forEach((blogData) => {
+    if (blogData._id === blogId) {
+      blog.title = blogData.title;
+      blog.bodyText = blogData.bodyText;
+    }
   });
+
+  const [formData, setFormData] = useState(blog);
 
   const handleTitleChange = async (event) => {
     event.preventDefault();
@@ -66,36 +75,26 @@ const SingleBlog = ({ blogId }) => {
           <div>Loading...</div>
         ) : (
           <div className="card-container">
-            {data.blogs.map((blog) => {
-              if (blog._id === blogId) {
-                return (
-                  <div>
-                    <form className="post" onSubmit={handleFormSubmit}>
-                      <label htmlFor="title">Blog title:</label>
-                      <input
-                        id="title"
-                        defaultValue={blog.title}
-                        name="title"
-                        onChange={handleTitleChange}
-                      />
-                      <label htmlFor="body">What's on your mind?</label>
-                      <textarea onChange={handleBodyChange}>
-                        {blog.bodyText}
-                      </textarea>
-                      <button className="post-button">
-                        Update your blog post
-                      </button>
-                    </form>
-                    <button
-                      className="secondary-button"
-                      onClick={() => handleRemove()}
-                    >
-                      Delete your post
-                    </button>
-                  </div>
-                );
-              }
-            })}
+            <div>
+              <form className="post" onSubmit={handleFormSubmit}>
+                <label htmlFor="title">Blog title:</label>
+                <input
+                  id="title"
+                  defaultValue={blog.title}
+                  name="title"
+                  onChange={handleTitleChange}
+                />
+                <label htmlFor="body">What's on your mind?</label>
+                <textarea onChange={handleBodyChange}>{blog.bodyText}</textarea>
+                <button className="post-button">Update your blog post</button>
+              </form>
+              <button
+                className="secondary-button"
+                onClick={() => handleRemove()}
+              >
+                Delete your post
+              </button>
+            </div>
           </div>
         )}
       </div>
