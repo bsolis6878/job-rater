@@ -81,7 +81,7 @@ The Job Rater application is currently deployed with [Heroku](https://blooming-s
 
 ## Questions
 
-If you have any question or would like to report the issues in this project, please feel free to contact me at email_to_be_annouced@domain.com
+If you have any question or would like to report the issues in this project, please feel free to contact me at bsolis6878@gmail.com
 
 ## License
 
