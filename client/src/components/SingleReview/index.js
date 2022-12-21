@@ -4,18 +4,28 @@ import { QUERY_REVIEWS } from '../../utils/queries';
 import { UPDATE_REVIEW, REMOVE_REVIEW } from '../../utils/mutations';
 
 const SingleReview = ({ reviewId }) => {
-    
     const { loading, data } = useQuery(QUERY_REVIEWS);
     const [updateReview, { updateError }] = useMutation(UPDATE_REVIEW);
     const [removeReview, { removeError }] = useMutation(REMOVE_REVIEW);
 
-    const [formData, setFormData] = useState({
+    const review = {
         reviewId: reviewId,
         employerName: '',
         rating: null,
         reviewText: '',
         jobTitle: ''
-    });
+    }
+
+    data.reviews.forEach((reviewData) => {
+        if (reviewData._id === reviewId) {
+            review.employerName = reviewData.employerName;
+            review.rating = reviewData.rating;
+            review.reviewText = reviewData.reviewText;
+            review.jobTitle = reviewData.jobTitle;
+        }
+    })
+
+    const [formData, setFormData] = useState(review);
 
     const handleReviewChange = async event => {
         const review = event.target.value;
@@ -86,39 +96,33 @@ const SingleReview = ({ reviewId }) => {
                     <div>Loading...</div>
                 ) : (
                     <div className='card-container'>
-                        {data.reviews.map(review =>
-                            {if (review._id === reviewId) {
-                                return (
-                                    <div>
-                                        <form className='post' onSubmit={handleFormSubmit}>
-                                            <label htmlFor='name'>What is the name of the company you worked for?</label>
-                                            <input id='name' placeholder={review.employerName} name='name' onChange={handleNameChange} />
-                                            <label htmlFor='title'>What was the role you had in this company?</label>
-                                            <input id='title' placeholder={review.jobTitle} name='title' onChange={handleTitleChange} />
-                                            <label htmlFor='rating'>
-                                                Overall, how would you rate your experience with this place of employment?
-                                            </label>
-                                            <p>1 being the lowest rating, and 5 being the highest.</p>
-                                            <input id='rating' name='rating' type='number' min='1' max='5' placeholder={review.rating} 
-                                                onKeyPress={(event) => {
-                                                if (!/[0-9]/.test(event.key)) {
-                                                    event.preventDefault();
-                                                }
-                                                }}
-                                                onChange={handleRatingChange}
-                                            />
-                                            <p>Tell us about your experience!</p>
-                                            <textarea placeholder={review.reviewText} onChange={handleReviewChange} />
-                                            <button className='post-button'>Update your review</button>
-                                        </form>
-                                        <button 
-                                                className='secondary-button'
-                                                onClick={() => handleRemove()}    
-                                            >Delete your review</button>
-                                    </div>
-                                )
-                            }}
-                        )}
+                        <div>
+                            <form className='post' onSubmit={handleFormSubmit}>
+                                <label htmlFor='name'>What is the name of the company you worked for?</label>
+                                <input id='name' defaultValue={review.employerName} name='name' onChange={handleNameChange} />
+                                <label htmlFor='title'>What was the role you had in this company?</label>
+                                <input id='title' defaultValue={review.jobTitle} name='title' onChange={handleTitleChange} />
+                                <label htmlFor='rating'>
+                                    Overall, how would you rate your experience with this place of employment?
+                                </label>
+                                <p>1 being the lowest rating, and 5 being the highest.</p>
+                                <input id='rating' name='rating' type='number' min='1' max='5' defaultValue={review.rating} 
+                                    onKeyPress={(event) => {
+                                    if (!/[0-9]/.test(event.key)) {
+                                        event.preventDefault();
+                                    }
+                                    }}
+                                    onChange={handleRatingChange}
+                                />
+                                <p>Tell us about your experience!</p>
+                                <textarea onChange={handleReviewChange}>{review.reviewText}</textarea>
+                                <button className='post-button'>Update your review</button>
+                            </form>
+                            <button 
+                                className='secondary-button'
+                                onClick={() => handleRemove()}    
+                            >Delete your review</button>
+                        </div>
                     </div>
                 )}
             </div>
