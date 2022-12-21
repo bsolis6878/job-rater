@@ -9,6 +9,7 @@ const Review = () => {
         employerName: '',
         rating: null,
         reviewText: '',
+        jobTitle: ''
     });
 
     const handleReviewChange = async event => {
@@ -38,13 +39,22 @@ const Review = () => {
         })
     }
 
+    const handleTitleChange = async event => {
+        event.preventDefault();
+        const title = event.target.value;
+        setFormData({
+            ...formData,
+            jobTitle: title
+        })
+    }
+
     const handleFormSubmit = async event => {
-        const { employerName, rating, reviewText } = formData;
+        const { employerName, rating, reviewText, jobTitle } = formData;
         event.preventDefault();
         
         try {
             await addReview({
-                variables: { employerName, rating, reviewText }
+                variables: { employerName, rating, reviewText, jobTitle }
             });
         } catch (e) {
             console.error(e);
@@ -53,25 +63,29 @@ const Review = () => {
     };
 
     return (
-        <form className='post' onSubmit={handleFormSubmit}>
-            <label htmlFor='name'>What is the name of the company you worked for?</label>
-            <input id='name' placeholder='Name of company' name='name' onChange={handleNameChange} />
-            <label htmlFor='rating'>
-                Overall, how would you rate your experience with this place of employment?
-            </label>
-            <p>1 being the lowest rating, and 5 being the highest.</p>
-            <input id='rating' name='rating' type='number' min='1' max='5' placeholder='1' 
-                onKeyPress={(event) => {
-                if (!/[0-9]/.test(event.key)) {
-                    event.preventDefault();
-                }
-                }}
-                onChange={handleRatingChange}
-            />
-            <p>Tell us about your experience!</p>
-            <textarea placeholder="Don't be shy!" onChange={handleReviewChange} />
-            <button className='post-button'>Post your review</button>
-        </form>
+        <div className='third-parent'>
+            <form className='post' onSubmit={handleFormSubmit}>
+                <label htmlFor='name'>What is the name of the company you worked for?</label>
+                <input id='name' placeholder='Name of company' name='name' onChange={handleNameChange} />
+                <label htmlFor='title'>What was the role you had in this company?</label>
+                <input id='title' placeholder='Role in company' name='title' onChange={handleTitleChange} />
+                <label htmlFor='rating'>
+                    Overall, how would you rate your experience with this place of employment?
+                </label>
+                <p>1 being the lowest rating, and 5 being the highest.</p>
+                <input id='rating' name='rating' type='number' min='1' max='5' placeholder='1' 
+                    onKeyPress={(event) => {
+                    if (!/[0-9]/.test(event.key)) {
+                        event.preventDefault();
+                    }
+                    }}
+                    onChange={handleRatingChange}
+                />
+                <p>Tell us about your experience!</p>
+                <textarea placeholder="Don't be shy!" onChange={handleReviewChange} />
+                <button className='post-button'>Post your review</button>
+            </form>
+        </div>
     )
 }
 

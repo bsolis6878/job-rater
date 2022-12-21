@@ -43,13 +43,15 @@ const PostBlog = () => {
     }
 
     return (
-        <form className='post' onSubmit={handleFormSubmit}>
-            <label htmlFor='title'>Blog title:</label>
-            <input id='title' placeholder='Enter title for blog post' name='title' onChange={handleTitleChange} />
-            <label htmlFor='body'>What's on your mind?</label>
-            <textarea placeholder="Don't be shy!" onChange={handleBodyChange} />
-            <button className='post-button'>Make your blog post</button>
-        </form>
+        <div className='third-parent'>
+            <form className='post' onSubmit={handleFormSubmit}>
+                <label htmlFor='title'>Blog title:</label>
+                <input id='title' placeholder='Enter title for blog post' name='title' onChange={handleTitleChange} />
+                <label htmlFor='body'>What's on your mind?</label>
+                <textarea placeholder="Don't be shy!" onChange={handleBodyChange} />
+                <button className='post-button'>Make your blog post</button>
+            </form>
+        </div>
     )
 }
 
