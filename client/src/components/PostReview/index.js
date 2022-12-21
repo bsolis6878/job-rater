@@ -12,8 +12,17 @@ const Review = () => {
         jobTitle: ''
     });
 
+    const [reviewText, setText] = useState('');
+    const [characterCount, setCharacterCount] = useState(0);
+
     const handleReviewChange = async event => {
         event.preventDefault();
+
+        if (event.target.value.length <= 280) {
+            setText(event.target.value);
+            setCharacterCount(event.target.value.length);
+        }
+
         const review = event.target.value;
         setFormData({
             ...formData,
@@ -82,7 +91,8 @@ const Review = () => {
                     onChange={handleRatingChange}
                 />
                 <p>Tell us about your experience!</p>
-                <textarea placeholder="Don't be shy!" onChange={handleReviewChange} />
+                <p>Character Count: {characterCount}/280</p>
+                <textarea placeholder="Don't be shy!" onChange={handleReviewChange} value={reviewText} />
                 <button className='post-button'>Post your review</button>
             </form>
         </div>

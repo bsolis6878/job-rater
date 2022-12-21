@@ -25,9 +25,16 @@ const SingleReview = ({ reviewId }) => {
         }
     })
 
+    const [reviewText, setText] = useState(review.reviewText);
+    const [characterCount, setCharacterCount] = useState(0);
     const [formData, setFormData] = useState(review);
 
     const handleReviewChange = async event => {
+        if (event.target.value.length <= 280) {
+            setText(event.target.value);
+            setCharacterCount(event.target.value.length);
+        }
+
         const review = event.target.value;
         setFormData({
             ...formData,
@@ -115,7 +122,8 @@ const SingleReview = ({ reviewId }) => {
                                     onChange={handleRatingChange}
                                 />
                                 <p>Tell us about your experience!</p>
-                                <textarea onChange={handleReviewChange}>{review.reviewText}</textarea>
+                                <p>Character Count: {characterCount}/280</p>
+                                <textarea onChange={handleReviewChange} value={reviewText}>{review.reviewText}</textarea>
                                 <button className='post-button'>Update your review</button>
                             </form>
                             <button 
