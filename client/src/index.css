@@ -1,9 +1,9 @@
 :root {
-  --primary: #41BBD9;
-  --secondary: #99C24D;
-  --tertiary: #F18F01;
-  --fourth: #006E90;
-  --fifth: #ADCAD6;
+  --primary: #00CFFF;
+  --secondary: #CDD5FF;
+  --tertiary: #C3F4FF;
+  --fourth: #7389FF;
+  --fifth: #00F3FF;
 }
 
 body {
@@ -111,6 +111,25 @@ nav h3 {
   margin-bottom: 50px;
 }
 
+.secondary-parent {
+  text-align: center;
+  width: 90vw;
+  background-color: var(--fourth);
+  border-radius: 20px;
+  border: 2px solid black;
+  margin: 50px 50px;
+}
+
+.third-parent {
+  text-align: center;
+  width: 90vw;
+  background-color: var(--fourth);
+  border-radius: 20px;
+  border: 2px solid black;
+  margin: 50px 50px;
+  padding-top: 30px;
+}
+
 #profile {
   margin-top: 50px;
 }
@@ -130,7 +149,6 @@ nav h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px;
 }
 
 .login-signup input, .post input {
@@ -148,8 +166,17 @@ nav h3 {
 
 .post-button {
   border: black 2px solid;
-  background-color: var(--tertiary);
+  background-color: var(--primary);
   margin-top: 40px;
+  padding: 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.secondary-button {
+  border: black 2px solid;
+  background-color: var(--primary);
+  margin-bottom: 40px;
   padding: 20px;
   cursor: pointer;
   font-size: 16px;
@@ -163,6 +190,21 @@ textarea {
   height: 10vh;
   width: 40vw;
   margin-top: 20px;
+  border: solid black 1px;
+  resize: none;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+input {
+  border: solid black 1px;
+  height: 2vh;
+}
+
+input:focus {
+  outline: none;
 }
 
 #rating {

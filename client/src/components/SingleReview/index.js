@@ -81,7 +81,7 @@ const SingleReview = ({ reviewId }) => {
 
     return (
         <div className='home'>
-            <div className='parent'>
+            <div className='secondary-parent'>
                 {loading ? (
                     <div>Loading...</div>
                 ) : (
@@ -92,7 +92,7 @@ const SingleReview = ({ reviewId }) => {
                                     <div>
                                         <form className='post' onSubmit={handleFormSubmit}>
                                             <label htmlFor='name'>What is the name of the company you worked for?</label>
-                                            <input id='name' value={review.employerName} name='name' onChange={handleNameChange} />
+                                            <input id='name' placeholder={review.employerName} name='name' onChange={handleNameChange} />
                                             <label htmlFor='title'>What was the role you had in this company?</label>
                                             <input id='title' placeholder={review.jobTitle} name='title' onChange={handleTitleChange} />
                                             <label htmlFor='rating'>
@@ -112,7 +112,7 @@ const SingleReview = ({ reviewId }) => {
                                             <button className='post-button'>Update your review</button>
                                         </form>
                                         <button 
-                                                className='post-button'
+                                                className='secondary-button'
                                                 onClick={() => handleRemove()}    
                                             >Delete your review</button>
                                     </div>

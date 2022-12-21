@@ -62,7 +62,7 @@ const SingleBlog = ({ blogId }) => {
 
     return (
         <div className='home'>
-            <div className='parent'>
+            <div className='secondary-parent'>
                 {loading ? (
                     <div>Loading...</div>
                 ) : (
@@ -79,7 +79,7 @@ const SingleBlog = ({ blogId }) => {
                                             <button className='post-button'>Update your blog post</button>
                                         </form>
                                         <button 
-                                            className='post-button'
+                                            className='secondary-button'
                                             onClick={() => handleRemove()}    
                                         >Delete your post</button>
                                     </div>

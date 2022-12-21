@@ -37,41 +37,43 @@ const Signup = () => {
     };
 
     return (
-        <div className='login-signup'>
-            <p>Welcome to Job Rater! Fill out the form below to create your account.</p>
-            <form onSubmit={handleFormSubmit}>
-                <label htmlFor='email'>Email</label>
-                <input 
-                    id='email'
-                    placeholder='Enter your email here'
-                    name='email'
-                    type='email'
-                    value={formState.email}
-                    onChange={handleChange}
-                />
-                <label htmlFor='username'>Username</label>
-                <input
-                    id='username'
-                    placeholder='Enter your username here'
-                    name='username'
-                    type='username'
-                    value={formState.username}
-                    onChange={handleChange}
-                />
-                <label htmlFor='password'>Password</label>
-                <input 
-                    id='password'
-                    placeholder='Enter your password here'
-                    name='password'
-                    type='password'
-                    value={formState.password}
-                    onChange={handleChange}
-                />
-                <button type='submit'>
-                    Sign up
-                </button>
-            </form>
-            {error && <div>Sign up failed</div>}
+        <div className='secondary-parent'>
+          <div className='login-signup'>
+              <h4>Welcome to Job Rater! Fill out the form below to create your account.</h4>
+              <form onSubmit={handleFormSubmit}>
+                  <label htmlFor='email'>Email</label>
+                  <input 
+                      id='email'
+                      placeholder='Enter your email here'
+                      name='email'
+                      type='email'
+                      value={formState.email}
+                      onChange={handleChange}
+                  />
+                  <label htmlFor='username'>Username</label>
+                  <input
+                      id='username'
+                      placeholder='Enter your username here'
+                      name='username'
+                      type='username'
+                      value={formState.username}
+                      onChange={handleChange}
+                  />
+                  <label htmlFor='password'>Password</label>
+                  <input 
+                      id='password'
+                      placeholder='Enter your password here'
+                      name='password'
+                      type='password'
+                      value={formState.password}
+                      onChange={handleChange}
+                  />
+                  <button type='submit' className='secondary-button'>
+                      Sign up
+                  </button>
+              </form>
+              {error && <div>Sign up failed</div>}
+          </div>
         </div>
     )
 }
